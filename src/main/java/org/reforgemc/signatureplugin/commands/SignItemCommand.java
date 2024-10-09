@@ -15,6 +15,12 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * Class to handle the signature command ('/signature')
+ * Checks to ensure that the item being signed is valid and hasn't been signed before
+ * @author Lucentus
+ */
 public class SignItemCommand implements TabExecutor {
 
     // Class Properties
@@ -33,7 +39,13 @@ public class SignItemCommand implements TabExecutor {
                     Material.GOLD_AXE,
                     Material.GOLD_SPADE,
                     Material.STONE_SWORD,
-                    Material.STONE_PICKAXE
+                    Material.STONE_PICKAXE,
+                    Material.STONE_AXE,
+                    Material.STONE_SPADE,
+                    Material.WOOD_SWORD,
+                    Material.WOOD_PICKAXE,
+                    Material.WOOD_AXE,
+                    Material.WOOD_SPADE
             ));
 
     private static final ArrayList<Material> VALID_SIGN_ARMOR = new ArrayList<>(
@@ -46,16 +58,24 @@ public class SignItemCommand implements TabExecutor {
                     Material.IRON_CHESTPLATE,
                     Material.IRON_LEGGINGS,
                     Material.IRON_BOOTS,
+                    Material.GOLD_HELMET,
+                    Material.GOLD_CHESTPLATE,
+                    Material.GOLD_LEGGINGS,
+                    Material.GOLD_BOOTS,
                     Material.CHAINMAIL_HELMET,
                     Material.CHAINMAIL_CHESTPLATE,
                     Material.CHAINMAIL_LEGGINGS,
-                    Material.CHAINMAIL_BOOTS
+                    Material.CHAINMAIL_BOOTS,
+                    Material.LEATHER_HELMET,
+                    Material.LEATHER_CHESTPLATE,
+                    Material.LEATHER_LEGGINGS,
+                    Material.LEATHER_BOOTS
             ));
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-        // Check if the user did '/sign'
+        // Check if the user did '/signature'
         if (command.getName().equalsIgnoreCase("signature")) {
 
             // Get the item that the commandSender is hovering over
