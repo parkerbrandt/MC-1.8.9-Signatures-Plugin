@@ -2,3 +2,9 @@ name: SignaturePlugin
 version: '${project.version}'
 main: org.reforgemc.signatureplugin.SignaturePlugin
 api-version: '1.21'
+commands:
+  sign:
+    description: Sign a tool or weapon with your user name
+    usage: /<command>
+    permission: <plugin name>.basic
+    permission-message: You don't have <permission>
