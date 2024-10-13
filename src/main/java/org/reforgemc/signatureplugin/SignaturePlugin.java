@@ -17,12 +17,16 @@ import java.util.Date;
 
 /**
  * Main Class for the 1.8.9 Signatures Plugin
- *
+ * Allows user to permanently sign their usernames (along with the date) to their held item
  * @author Lucentus
  */
 public final class SignaturePlugin extends JavaPlugin {
 
-    // Class Properties
+    /*
+     * Class Properties
+     */
+
+    // List of valid Minecraft tools to allow signing
     private static final ArrayList<Material> VALID_SIGN_TOOLS = new ArrayList<>(
             Arrays.asList(
                     Material.DIAMOND_SWORD,
@@ -47,6 +51,7 @@ public final class SignaturePlugin extends JavaPlugin {
                     Material.WOOD_SPADE
             ));
 
+    // List of valid armor types to allow signing
     private static final ArrayList<Material> VALID_SIGN_ARMOR = new ArrayList<>(
             Arrays.asList(
                     Material.DIAMOND_HELMET,
@@ -71,6 +76,14 @@ public final class SignaturePlugin extends JavaPlugin {
                     Material.LEATHER_BOOTS
             ));
 
+
+    /*
+     * Override Methods
+     */
+
+    /**
+     * Logic to execute on plugin startup
+     */
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -78,12 +91,24 @@ public final class SignaturePlugin extends JavaPlugin {
 
     }
 
+    /**
+     * Logic to execute when plugin is turned off
+     */
     @Override
     public void onDisable() {
         // Plugin shutdown logic
     }
 
 
+    /**
+     * When a user issues a command (using '/'), calls this method and parses what to do with the command
+     * Allows a user to sign an item using '/signature' if they are holding a valid item
+     * @param commandSender the player who issued the command
+     * @param command the actual command the player types out
+     * @param s
+     * @param strings
+     * @return True if the held item can be signed and '/signature' was used, False otherwise
+     */
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
